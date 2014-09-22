@@ -9,5 +9,12 @@ import json
 #if None than no files are saved
 savepath = "."
 
+#Your API key for Big Huge Thesarus
+APIkey = ""
+
 def dict(word):
-	pass
+	if(savepath):
+		try:
+			return json.load(savepath+word)
+		else:
+			pass
