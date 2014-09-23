@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 #Pysarus
 #A python wrapper for Big Huge Thesarus
 #Jacob Adams
@@ -12,9 +13,14 @@ savepath = "."
 #Your API key for Big Huge Thesarus
 APIkey = ""
 
-def dict(word):
+def thesarus(word):
 	if(savepath):
 		try:
 			return json.load(savepath+word)
-		else:
-			pass
+		except:
+			print("No file found in "+savepath+" for "+word)
+		web = urllib.request.urlopen("http://words.bighugelabs.com/api/2/"+word+"/json")
+		jsonobj = json.loads(web.read())
+		if(savepath):
+			json.dump(jsonobj,savepath+word)
+		return jsonobj
