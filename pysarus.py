@@ -19,7 +19,7 @@ def thesarus(word):
 			return json.load(savepath+word)
 		except:
 			print("No file found in "+savepath+" for "+word)
-		web = urllib.request.urlopen("http://words.bighugelabs.com/api/2/"+word+"/json")
+		web = urllib.request.urlopen("http://words.bighugelabs.com/api/2/"+APIkey+"/"+word+"/json")
 		jsonobj = json.loads(web.read())
 		if(savepath):
 			json.dump(jsonobj,savepath+word)
